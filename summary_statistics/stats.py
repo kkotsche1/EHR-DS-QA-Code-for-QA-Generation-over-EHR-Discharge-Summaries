@@ -38,3 +38,47 @@ print(f"Normal length notes {normal_length_context_notes}")
 print(f"Extended length notes {extended_length_context_notes}")
 print(f"Standard context number of QA pairs: {non_extended_qas}")
 print(f"Extended context number of QA pairs: {extended_qas}")
+
+
+correct_counter = 0
+incorrect_counter = 0
+extended_incorrect = 0
+medication_counter = 0
+extended_context = 0
+standard_context = 0
+extended_correct = 0
+qa_counter = 0
+standard_correct = 0
+standard_incorrect = 0
+
+for item in data:
+    qa_list = item["qa_pairs"]
+    if item.get("human_verified"):
+        for qa_pair in qa_list:
+            qa_counter += 1
+
+            if item["extended_context"] == True:
+                extended_context += 1
+                if qa_pair["correct"] == True:
+                    correct_counter += 1
+                    extended_correct += 1
+                else:
+                    incorrect_counter += 1
+                    extended_incorrect += 1
+
+            else:
+                standard_context += 1
+                if qa_pair["correct"] == True:
+                    correct_counter += 1
+                    standard_correct += 1
+                else:
+                    incorrect_counter += 1
+                    standard_incorrect += 1
+
+
+print(standard_correct)
+print(standard_context)
+print(standard_correct / standard_context)
+print(extended_correct)
+print(extended_context)
+print(extended_correct / extended_context)
