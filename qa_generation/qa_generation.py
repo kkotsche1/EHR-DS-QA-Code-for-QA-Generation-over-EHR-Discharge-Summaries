@@ -137,7 +137,7 @@ from tqdm import tqdm
 
 
 def process_notes_and_add_qa_pairs():
-    """Iterate through all notes in the radiology_notes table and add qa_pairs for each note."""
+    """Iterate through all notes in the discharge_notes table and add qa_pairs for each note."""
 
     # Select all notes from discharge_notes table
     select_cursor.execute("SELECT id, note FROM discharge_notes")
